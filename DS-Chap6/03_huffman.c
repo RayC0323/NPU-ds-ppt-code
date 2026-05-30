@@ -1,4 +1,4 @@
-/*
+﻿/*
  * 文件: DS-Chap6/03_huffman.c
  * 主题: Huffman 树构造和 Huffman 编码。
  * 说明: 本文件为自包含示例，包含当前主题相关的数据结构定义、操作函数、辅助函数和演示 main。
@@ -14,6 +14,10 @@
 
 typedef char ElemType;
 
+/*
+ * 结构体: BinTreeNode
+ * 作用: 二叉树结点结构：data 保存结点值，left/right 分别指向左右孩子。
+ */
 typedef struct BinTreeNode {
     ElemType data;
     struct BinTreeNode *left;
@@ -22,6 +26,10 @@ typedef struct BinTreeNode {
 
 typedef enum { Link, Thread } PointerTag;
 
+/*
+ * 结构体: ThrNode
+ * 作用: 线索二叉树结点结构：left/right 可指向孩子或中序前驱后继，ltag/rtag 标记指针含义。
+ */
 typedef struct ThrNode {
     ElemType data;
     struct ThrNode *left;
@@ -30,6 +38,10 @@ typedef struct ThrNode {
     PointerTag rtag;
 } ThrNode, *PThrTree;
 
+/*
+ * 结构体: HtNode
+ * 作用: HtNode 结构：用于保存当前数据结构算法需要的相关字段。
+ */
 typedef struct {
     int weight;
     int parent;

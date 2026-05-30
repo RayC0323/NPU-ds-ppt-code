@@ -1,4 +1,4 @@
-/*
+﻿/*
  * 文件: DS-Chap9/03_merge_tournament_radix.c
  * 主题: 归并、锦标赛和基数排序。
  * 说明: 本文件为自包含示例，包含当前主题相关的数据结构定义、操作函数、辅助函数和演示 main。
@@ -16,11 +16,19 @@
 typedef int KeyType;
 typedef int DataType;
 
+/*
+ * 结构体: RecordNode
+ * 作用: 排序记录结构：key 是排序关键字，info 是随记录一起移动的数据。
+ */
 typedef struct {
     KeyType key;
     DataType info;
 } RecordNode;
 
+/*
+ * 结构体: SortObject
+ * 作用: 排序顺序表结构：record 保存待排序记录，n 保存记录个数。
+ */
 typedef struct {
     RecordNode record[MAXNUM];
     int n;  /* 记录个数 */

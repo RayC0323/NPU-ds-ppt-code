@@ -1,4 +1,4 @@
-/*
+﻿/*
  * 文件: src/DS-Chap9.c
  * 说明: 第 9 章排序公共实现：插入、交换、选择、归并、锦标赛和基数排序。
  * 来源: 根据课程 PPT 中的代码片段整理为可运行 C11 程序。
@@ -15,11 +15,19 @@
 typedef int KeyType;
 typedef int DataType;
 
+/*
+ * 结构体: RecordNode
+ * 作用: 排序记录结构：key 是排序关键字，info 是随记录一起移动的数据。
+ */
 typedef struct {
     KeyType key;
     DataType info;
 } RecordNode;
 
+/*
+ * 结构体: SortObject
+ * 作用: 排序顺序表结构：record 保存待排序记录，n 保存记录个数。
+ */
 typedef struct {
     RecordNode record[MAXNUM];
     int n;  /* 记录个数 */

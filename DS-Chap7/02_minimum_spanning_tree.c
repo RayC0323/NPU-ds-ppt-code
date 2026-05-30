@@ -1,4 +1,4 @@
-/*
+﻿/*
  * 文件: DS-Chap7/02_minimum_spanning_tree.c
  * 主题: 最小生成树：Prim 和 Kruskal。
  * 说明: 本文件为自包含示例，包含当前主题相关的数据结构定义、操作函数、辅助函数和演示 main。
@@ -13,12 +13,20 @@
 #define MAXE 100
 #define INF 1000000000
 
+/*
+ * 结构体: EdgeNode
+ * 作用: 邻接表边结点结构：adjvex 保存邻接点下标，weight 保存边权，next 指向下一条边。
+ */
 typedef struct EdgeNode {
     int to;
     int weight;
     struct EdgeNode *next;
 } EdgeNode;
 
+/*
+ * 结构体: Graph
+ * 作用: 图结构：vexs 保存顶点，adj 保存邻接表，arcs 保存邻接矩阵，directed 标记是否有向。
+ */
 typedef struct {
     char vexs[MAXV];
     int vexNum;
@@ -28,6 +36,10 @@ typedef struct {
     EdgeNode *adj[MAXV];       /* 邻接表 */
 } Graph;
 
+/*
+ * 结构体: Edge
+ * 作用: 边结构：u、v 表示边的两个端点，w 表示边权。
+ */
 typedef struct {
     int from;
     int to;

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * 文件: DS-Chap3/01_stacks.c
  * 主题: 顺序栈和链栈：初始化、判空、入栈、出栈和取栈顶。
  * 说明:
@@ -20,30 +20,54 @@
 typedef int ElemType;
 typedef int DataType;
 
+/*
+ * 结构体: SeqStack
+ * 作用: 顺序栈结构：element 数组保存栈元素，top 指向当前栈顶位置。
+ */
 typedef struct {
   ElemType element[MAXNUM];
   int top;
 } SeqStack, *PSeqStack;
 
+/*
+ * 结构体: StackNode
+ * 作用: 链栈结点结构：data 保存栈元素，next 指向下一个栈结点。
+ */
 typedef struct StackNode {
   DataType data;
   struct StackNode *next;
 } StackNode, *PStackNode;
 
+/*
+ * 结构体: LinkStack
+ * 作用: 链栈控制结构：top 指向链式栈顶结点。
+ */
 typedef struct {
   PStackNode top;
 } LinkStack, *PLinkStack;
 
+/*
+ * 结构体: QNode
+ * 作用: 链队列结点结构：data 保存队列元素，next 指向后继结点。
+ */
 typedef struct QNode {
   DataType data;
   struct QNode *next;
 } QNode, *PQNode;
 
+/*
+ * 结构体: LinkQueue
+ * 作用: 链队列控制结构：front 指向队头，rear 指向队尾。
+ */
 typedef struct {
   PQNode front;
   PQNode rear;
 } LinkQueue, *PLinkQueue;
 
+/*
+ * 结构体: SeqQueue
+ * 作用: 循环顺序队列结构：element 保存队列元素，front/rear 采用取模方式循环移动。
+ */
 typedef struct {
   DataType element[MAXNUM];
   int front;

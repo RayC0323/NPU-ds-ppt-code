@@ -1,4 +1,4 @@
-/*
+﻿/*
  * 文件: src/DS-Chap2.c
  * 说明: 第 2 章线性表公共实现：顺序表、单链表、静态链表、双向链表、Josephus 和多项式。
  * 来源: 根据课程 PPT 中的代码片段整理为可运行 C11 程序。
@@ -15,6 +15,10 @@
 
 typedef int DataType;
 
+/*
+ * 结构体: SeqList
+ * 作用: 顺序表结构：用定长数组保存线性表元素，length 记录当前有效元素个数。
+ */
 typedef struct SeqList {
     DataType element[MAXNUM];
     int length;  /* length < MAXNUM */
@@ -211,11 +215,19 @@ void MergeSqList(SeqList *la, SeqList *lb, SeqList *lc) {
     while (j < lb->length) insert_seq(lc, lb->element[j++], lc->length);
 }
 
+/*
+ * 结构体: Node
+ * 作用: 单链表结点结构：info 保存数据域，next 指向后继结点。
+ */
 typedef struct Node {
     DataType info;
     struct Node *next;
 } Node, *PNode;
 
+/*
+ * 结构体: LinkList
+ * 作用: 带头结点单链表结构：head 指向头结点，便于统一处理插入和删除。
+ */
 typedef struct LinkList {
     PNode head;  /* 指向单链表中的头结点 */
 } LinkList, *PLinkList;
@@ -429,6 +441,10 @@ void DestroyLinkList(PLinkList list) {
 }
 
 #define STATIC_MAX_SIZE 20
+/*
+ * 结构体: Component
+ * 作用: 静态链表结点结构：data 保存数据，cursor 保存下一个结点的数组下标。
+ */
 typedef struct {
     DataType data;
     int cursor;
@@ -475,12 +491,20 @@ void Free(SLinkList list, int k) {
     list[0].cursor = k;
 }
 
+/*
+ * 结构体: DoubleNode
+ * 作用: 双向链表结点结构：info 保存数据，llink 指向前驱，rlink 指向后继。
+ */
 typedef struct DoubleNode {
     DataType info;
     struct DoubleNode *llink;
     struct DoubleNode *rlink;
 } DoubleNode, *PDoubleNode;
 
+/*
+ * 结构体: DoubleList
+ * 作用: 双向链表控制结构：head 和 tail 分别指向头尾哨兵结点。
+ */
 typedef struct {
     PDoubleNode head;
     PDoubleNode tail;
@@ -579,6 +603,10 @@ void Josephus(int n, int m, int out[]) {
     }
 }
 
+/*
+ * 结构体: Term
+ * 作用: 一元多项式项结构：coef 保存系数，expn 保存指数。
+ */
 typedef struct {
     double coef;
     int expn;

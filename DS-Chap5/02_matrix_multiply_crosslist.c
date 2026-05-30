@@ -1,4 +1,4 @@
-/*
+﻿/*
  * 文件: DS-Chap5/02_matrix_multiply_crosslist.c
  * 主题: 稀疏矩阵乘法和十字链表表示。
  * 说明: 本文件为自包含示例，包含当前主题相关的数据结构定义、操作函数、辅助函数和演示 main。
@@ -16,12 +16,20 @@ typedef int Status;
 #define OK 1
 #define ERROR 0
 
+/*
+ * 结构体: Triple
+ * 作用: 稀疏矩阵三元组结构：i、j 表示非零元位置，e 表示非零元值。
+ */
 typedef struct {
     int i;
     int j;
     double e;
 } Triple;
 
+/*
+ * 结构体: TSMatrix
+ * 作用: 稀疏矩阵三元组表结构：data 保存非零元，mu/nu/tu 保存行数、列数和非零元个数。
+ */
 typedef struct {
     Triple data[MAXSIZE];
     int mu;
@@ -29,6 +37,10 @@ typedef struct {
     int tu;
 } TSMatrix;
 
+/*
+ * 结构体: OLNode
+ * 作用: 十字链表非零元结点结构：row/col/value 保存位置和值，right/down 连接同行和同列结点。
+ */
 typedef struct OLNode {
     int i;
     int j;
@@ -37,6 +49,10 @@ typedef struct OLNode {
     struct OLNode *down;
 } OLNode, *OLink;
 
+/*
+ * 结构体: CrossList
+ * 作用: 十字链表矩阵结构：rhead 和 chead 分别保存每行、每列链表头指针。
+ */
 typedef struct {
     int mu;
     int nu;
@@ -47,6 +63,10 @@ typedef struct {
 
 typedef enum { ATOM, LIST } ElemTag;
 
+/*
+ * 结构体: GLNode
+ * 作用: 广义表结点结构：tag 区分原子和子表，first 指向子表首元，next 指向同层后继。
+ */
 typedef struct GLNode {
     ElemTag tag;
     int atom;

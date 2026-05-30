@@ -1,4 +1,4 @@
-/*
+﻿/*
  * 文件: src/DS-Chap8.c
  * 说明: 第 8 章查找公共实现：顺序/折半查找、二叉排序树、AVL 树与散列表。
  * 来源: 根据课程 PPT 中的代码片段整理为可运行 C11 程序。
@@ -16,11 +16,19 @@ typedef int KeyType;
 typedef int DataType;
 typedef int BOOL;
 
+/*
+ * 结构体: Item
+ * 作用: 查找表记录结构：key 保存关键码，info 保存与关键码关联的数据。
+ */
 typedef struct {
     KeyType key;
     DataType info;
 } Item;
 
+/*
+ * 结构体: SeqDictionary
+ * 作用: 顺序查找表结构：elem 保存记录数组，n 保存当前记录个数。
+ */
 typedef struct {
     Item elem[MAXSIZE];
     int n;
@@ -74,6 +82,10 @@ int dichotomySearch(SeqDictionary *pdic, KeyType key, int *position) {
     return FALSE;
 }
 
+/*
+ * 结构体: BinNode
+ * 作用: 二叉排序树结点结构：key 为关键码，data 为数据域，left/right 指向左右子树。
+ */
 typedef struct BinNode {
     KeyType key;
     DataType data;
@@ -221,6 +233,10 @@ void destroyBST(PBinTree T) {
     free(T);
 }
 
+/*
+ * 结构体: AVLNode
+ * 作用: AVL 树结点结构：key/data 保存记录，height 保存树高，left/right 指向左右子树。
+ */
 typedef struct AVLNode {
     KeyType key;
     DataType data;
@@ -383,11 +399,19 @@ void destroyAVL(PAVLTree T) {
 
 typedef enum { EMPTY, OCCUPIED, DELETED } HashState;
 
+/*
+ * 结构体: HashItem
+ * 作用: 散列表单元结构：key 保存关键码，state 标记空闲、占用或已删除状态。
+ */
 typedef struct {
     KeyType key;
     HashState state;
 } HashItem;
 
+/*
+ * 结构体: HashDictionary
+ * 作用: 散列表结构：table 保存开放定址表，size 保存表长。
+ */
 typedef struct {
     HashItem table[MAXSIZE];
     int size;

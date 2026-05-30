@@ -1,4 +1,4 @@
-/*
+﻿/*
  * 文件: src/DS-Chap6.c
  * 说明: 第 6 章树和二叉树公共实现：二叉树遍历、线索二叉树与 Huffman 编码。
  * 来源: 根据课程 PPT 中的代码片段整理为可运行 C11 程序。
@@ -13,6 +13,10 @@
 
 typedef char ElemType;
 
+/*
+ * 结构体: BinTreeNode
+ * 作用: 二叉树结点结构：data 保存结点值，left/right 分别指向左右孩子。
+ */
 typedef struct BinTreeNode {
     ElemType data;
     struct BinTreeNode *left;
@@ -202,6 +206,10 @@ void LevelOrderTraverse(PBinTree T) {
 
 typedef enum { Link, Thread } PointerTag;
 
+/*
+ * 结构体: ThrNode
+ * 作用: 线索二叉树结点结构：left/right 可指向孩子或中序前驱后继，ltag/rtag 标记指针含义。
+ */
 typedef struct ThrNode {
     ElemType data;
     struct ThrNode *left;
@@ -282,6 +290,10 @@ void InOrderTraverse_Thr(PThrTree T) {
     }
 }
 
+/*
+ * 结构体: HtNode
+ * 作用: HtNode 结构：用于保存当前数据结构算法需要的相关字段。
+ */
 typedef struct {
     int weight;
     int parent;
