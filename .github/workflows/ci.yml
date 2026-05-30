@@ -1,0 +1,16 @@
+name: C build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  gcc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build all programs
+        run: make all
+      - name: Run topic demos
+        run: make run
+
